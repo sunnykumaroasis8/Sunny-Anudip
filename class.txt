@@ -1,0 +1,15 @@
+ls -- view all file and folder //  to display the all list 
+cd ----  change directory 
+../ -- back toh perivoius folder 
+git add "file name " -- cammand is used to  add file in stage area 
+git add -A -- this cammand is used for adding all the file in stage area 
+git commit "file name" -- this cammand is used for pussing the file in the committed area 
+                        .....
+agter using this cammand a window open a which is basically for your commited  messege  
+then in the bottom line we use (:wq)
+git commit file name -m "messege"
+ls --lart -- view hiden file in a folder
+ tauch file name --- to create file 
+ git chackout (file name) -- to back perivious code line like (ctrl+z) 
+ git rm (file name ) --  to remove file parmanently in the folder
+ git log -- git low cammand to use for traking tha record toh prevoius cammand git
