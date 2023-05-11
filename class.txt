@@ -13,3 +13,8 @@ ls --lart -- view hiden file in a folder
  git chackout (file name) -- to back perivious code line like (ctrl+z) 
  git rm (file name ) --  to remove file parmanently in the folder
  git log -- git low cammand to use for traking tha record toh prevoius cammand git
+
+ 
+ git checkout 
+ git merge  
+ git branch
