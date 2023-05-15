@@ -1,0 +1,21 @@
+../ 
+cd 
+ls
+git init 
+git cofig --global user.name
+git config --global user.email
+git add 
+git add -A 
+git comit filename
+git commit -m "......"
+git commit -a -m 
+git checkout 
+git branch  
+git branch branch name  
+git checkout branch name 
+git log 
+git diff
+git rm 
+touch file name
+git lart
+
