@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Table</title>
+	<link rel="stylesheet" href="style.css">
+	<STyle>
+		* {
+			margin: 0px;
+			padding: 0px;
+			box-sizing: border-box;
+		}
+
+		.head {
+			width: 140px;
+			margin: auto;
+		}
+
+		table {
+			width: 100%;
+			height: 300px;
+			margin: auto;
+			text-align: center;
+			background: rgb(238, 204, 204);
+			color: rgb(8, 8, 8);
+			margin-bottom: 10px;
+			padding: 10px;
+		}
+
+		thead th,
+		td {
+			box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+
+		tr {
+			height: 50px;
+		}
+
+		#show th,
+		#show td {
+			padding: 13px;
+			/* border: 2px solid black; */
+			box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+
+		#show {
+			width: 100%;
+			padding: 10px;
+		}
+
+		#btn {
+			background-color: rgb(58, 45, 252);
+			height: 50px;
+			color: #fff;
+			font-size: 25px;
+		}
+
+		#btna {
+			width: 100%;
+		}
+
+		#btna td input {
+			width: 100%;
+		}
+
+		.btnplus {
+			margin: 5px;
+			padding: 3px;
+			background-color: rgb(240, 215, 215);
+		}
+		.lastbtn{
+			padding: 10px;
+			width: 300px;
+			margin-left: 470px;
+			margin-top: 30px;
+			margin-bottom: 50px;
+			background-color: red;
+		}
+	</STyle>
+</head>
+
+<body>
+
+	<div class="container">
+		<h3 class="head">Online Flipkart</h3>
+		<table border="">
+			<thead>
+				<tr>
+					<th>Enter Name</th>
+					<td><input type="text" id="name"></td>
+
+					<th>Product Id</th>
+					<td><input type="text" id="proid"></td>
+
+					<th>Product Name</th>
+					<td><input type="text" id="proname"></td>
+
+					<th>Product Qut</th>
+					<td><input type="text" id="Qut"></td>
+				<tr id="btna">
+					<td colspan="8"><input type="button" name="button" id="btn" value="Add cart" onclick="AddRow()">
+					</td>
+				</tr>
+				</tr>
+			</thead>
+		</table>
+
+		<table border="" id="show">
+			<thead>
+				<tr>
+					<th>Enter Name</th>
+					<th>Product Id</th>
+					<th>Product Name</th>
+					<th>Product Qut</th>
+				</tr>
+			</thead>
+		</table>
+		<button class="lastbtn" type="submit" value="clear" onclick="textclear()">Clear All Data</button>
+	</div>
+
+
+	<script>
+
+		var list1 = [];
+		var list2 = [];
+		var list3 = [];
+		var list4 = [];
+
+		var n = 1;
+		var x = 0;
+		var html = "";
+		var html1 = "";
+		function AddRow() {
+
+			if (document.getElementById("name").value == "") {
+				alert("Please Enter Your Name");
+				document.getElementById("name").focus();
+				document.getElementById("name").style.backgroundColor = "red";
+				return false;
+			}
+
+
+			if (document.getElementById("proid").value == "") {
+				alert("Please Enter Your product id");
+				document.getElementById("proid").focus();
+				document.getElementById("proid").style.backgroundColor = "red";
+				return false;
+			}
+
+
+			if (document.getElementById("proname").value == "") {
+				alert("Please Enter Your PRoduct Name");
+				document.getElementById("proname").focus();
+				document.getElementById("proname").style.backgroundColor = "red";
+				return false;
+			}
+
+
+			if (document.getElementById("Qut").value == "") {
+				alert("Please Enter Your Quentity");
+				document.getElementById("Qut").focus();
+				document.getElementById("Qut").style.backgroundColor = "red";
+				return false;
+			}
+
+			var AddRown = document.getElementById('show');
+			var NewRow = AddRown.insertRow(n);
+
+			list1[x] = document.getElementById("name").value;
+			list2[x] = document.getElementById("proid").value;
+			list3[x] = document.getElementById("proname").value;
+			list4[x] = document.getElementById("Qut").value;
+
+			var cel1 = NewRow.insertCell(0);
+			var cel2 = NewRow.insertCell(1);
+			var cel3 = NewRow.insertCell(2);
+			var cel4 = NewRow.insertCell(3);
+
+			html = '<input type="button" class="btnplus" value = "+" onClick="Javacsript:plus(this)">';
+			html1 = '<input type="button" class="btnplus" value = "-" onClick="Javacsript:minus(this)">';
+			cel1.innerHTML = list1[x];
+			cel2.innerHTML = list2[x];
+			cel3.innerHTML = list3[x];
+			cel4.innerHTML = html1 + list4[x] + html;
+			n++;
+			x++;
+		}
+		function textclear() {
+			document.getElementById("name").value = "";
+			document.getElementById("proid").value = "";
+			document.getElementById("proname").value = "";
+			document.getElementById("Qut").value = "";
+			var tableHeaderRowCount = 1;
+			var table = document.getElementById('show');
+			var rowCount = table.rows.length;
+			for (var i = tableHeaderRowCount; i < rowCount; i++) {
+				table.deleteRow(tableHeaderRowCount);
+			}
+		}
+		function plus(obj) {
+			html = '<input type="button" class="btnplus" value = "+" onClick="Javacsript:plus(this)">';
+			html1 = '<input type="button" class="btnplus" value = "-" onClick="Javacsript:minus(this)">';
+			var index = obj.parentNode.parentNode.rowIndex;
+			var AddRown = document.getElementById('show');
+			var valuesdata = document.getElementById("show").rows[index].cells[3].innerHTML;
+			var actualval = valuesdata.split(">");
+			var valu = actualval[1].split("<");
+			var v = valu[0];
+			var newval = parseInt(v) + 1;
+			document.getElementById("show").rows[index].cells[3].innerHTML = html1 + newval + html;
+		}
+		function minus(obj) {
+			html = '<input type="button" class="btnplus" value = "+" onClick="Javacsript:plus(this)">';
+			html1 = '<input type="button" class="btnplus" value = "-" onClick="Javacsript:minus(this)">';
+			var index = obj.parentNode.parentNode.rowIndex;
+			var AddRown = document.getElementById('show');
+			var valuesdata = document.getElementById("show").rows[index].cells[3].innerHTML;
+			var actualval = valuesdata.split(">");
+			var valu = actualval[1].split("<");
+			var v = valu[0];
+			var newval = parseInt(v) - 1;
+			document.getElementById("show").rows[index].cells[3].innerHTML = html1 + newval + html;
+		}
+	</script>
+</body>
+
+</html>
